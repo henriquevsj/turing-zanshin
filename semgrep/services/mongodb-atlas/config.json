@@ -1,0 +1,22 @@
+{
+    "name": "mongodb-atlas",
+    "type": "mongodb-atlas",
+    "config": {
+        "aggOptions": {
+            "forceAllowDiskUse": false
+        },
+        "clusterId": "65de54e51f75157ae93527cc",
+        "clusterName": "Cluster01",
+        "clusterSize": "M0",
+        "clusterType": "atlas",
+        "clusterUpdated": 0,
+        "groupName": "Project 0",
+        "isLoadBalanced": false,
+        "lastUpdated": 1713487448,
+        "orgName": "DoCompany",
+        "readPreference": "primary",
+        "uri": "mongodb://ac-eamwa7w-shard-00-00.it0lbcv.mesh.mongodb.net:30480,ac-eamwa7w-shard-00-01.it0lbcv.mesh.mongodb.net:30480,ac-eamwa7w-shard-00-02.it0lbcv.mesh.mongodb.net:30480",
+        "wireProtocolEnabled": false
+    },
+    "version": 1
+}
