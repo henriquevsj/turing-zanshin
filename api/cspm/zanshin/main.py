@@ -22,7 +22,7 @@ def process_document(db_instance, collection, document):
     if zanshin_token and zanshin_url and zanshin_organization_id:
         try:
             # Chamada à API Zanshin
-            headers = {'accept': 'application/json','Authorization': f'Bearer {zanshin_token}','Content-Type': 'application/json'}
+            headers = {'accept': 'application/json','Authorization': f'Bearer {zanshin_token}'}
             url = f"{zanshin_url}/alerts"
             payload = {"organizationId": zanshin_organization_id,"page": 1,"pageSize": 25}
             response = requests.post(url, headers=headers, json=payload)
@@ -49,7 +49,7 @@ def process_response(response_data, project_name, tool_type, tool_name, zanshin_
     # Processamento dos alertas
     for alert in alerts:
         
-        headers = {'accept': 'application/json','Authorization': f'Bearer {zanshin_token}', 'Content-Type': 'application/json'}
+        headers = {'accept': 'application/json','Authorization': f'Bearer {zanshin_token}'}
         url = f"{zanshin_url}/alerts/{alert.get('id')}"
         response_scantargets = requests.get(url, headers=headers)
         response_scantargets_json = response_scantargets.json()
