@@ -1,0 +1,8 @@
+{
+    "app_id": "semgrep-hlwhl",
+    "config_version": 20210101,
+    "name": "Semgrep",
+    "provider_region": "azure-eastus2",
+    "deployment_model": "LOCAL",
+    "environment": "development"
+}
