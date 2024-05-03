@@ -12,6 +12,11 @@ collection = db['tenchi_security']  # Altere 'projects' para o nome da sua cole√
 
 logging.basicConfig(level=logging.INFO)  # Configurando o n√≠vel de log para INFO
 
+
+@app.route("/")
+def home():
+    return "Flask Vercel Example - Hello World", 200
+
 @app.post("/webhook")
 async def webhook(request: Request):
     try:
