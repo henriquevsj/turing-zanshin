@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../turing-core/api')
 from common.mongodb_connector import MongoDB
 from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse
