@@ -4,6 +4,5 @@ python-dotenv
 requests
 jira
 pymsteams
-sonarqube
 fastapi
 uvicorn
