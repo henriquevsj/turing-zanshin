@@ -1,3 +1,4 @@
+python-sonarqube-api==2.0.4
 pymongo
 python-dotenv
 requests
