@@ -93,7 +93,6 @@ peewee==3.17.1
 pexpect==4.9.0
 pillow==10.2.0
 pluginbase==1.0.1
-ply==3.11
 policy-sentry==0.12.10
 prettytable==3.9.0
 prompt-toolkit==3.0.43
@@ -158,4 +157,3 @@ whispers==2.2.0
 xmltodict==0.13.0
 yarl==1.9.4
 zipp==3.17.0
-ply==3.11
