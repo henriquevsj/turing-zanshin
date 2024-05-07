@@ -75,7 +75,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: python-app
+          name: python-webhook-form
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
@@ -91,6 +91,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'dev-webhook-form'
+          app-name: 'dev-python-webhook-form'
           slot-name: 'Development'
           
