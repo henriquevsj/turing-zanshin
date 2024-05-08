@@ -34,7 +34,7 @@ jobs:
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Copy common folder to webhook-form
-        run: cp -R common/* webhook-form/
+        run: cp -R common webhook-form/
         
       - name: Zip artifact for deployment
         run: zip release.zip webhook-form/* -r
