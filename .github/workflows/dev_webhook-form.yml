@@ -74,7 +74,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: python-app
+          name: python-webhook-form
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
