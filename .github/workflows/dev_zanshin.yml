@@ -36,13 +36,18 @@ jobs:
 
       # Optional: Add step to run tests here
 
+      - name: Copy common folder and requirements.txt to webhook-form
+        run: |
+          cp -R common zanshin/
+          cp requirements.txt zanshin/
+          
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: python-app
+          name: python-zanshin
           path: |
             release.zip
             !venv/
@@ -60,7 +65,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: python-app
+          name: python-zanshin
 
       - name: Unzip artifact for deployment
         run: unzip release.zip     
