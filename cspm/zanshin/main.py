@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../microservices')
 import logging
 import requests
 from common.mongodb_fetch_data import DataFetcher
@@ -68,7 +66,7 @@ def process_response(response_data, project_name, tool_type, tool_name, zanshin_
                 'Status': alert.get('state'),
                 'CreationDate': alert.get('createdAt'),
             }
-            selected_fields.append(_filter)
+            selected_fields.append(_filter) 
 
     return selected_fields
 

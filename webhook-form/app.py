@@ -1,8 +1,8 @@
+import logging
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse
-import logging
 from common.mongodb_connector import MongoDB
-import uvicorn
 
 app = FastAPI()
 
