@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Create and start virtual environment
         run: |
@@ -33,7 +33,7 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Copy common folder and requirements.txt to webhook-form
+      - name: Copy common folder and requirements.txt
         run: |
           cp -R common webhook-form/
           cp requirements.txt webhook-form/

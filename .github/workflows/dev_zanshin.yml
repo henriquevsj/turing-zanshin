@@ -36,7 +36,7 @@ jobs:
 
       # Optional: Add step to run tests here
 
-      - name: Copy common folder and requirements.txt to webhook-form
+      - name: Copy common folder and requirements.txt
         run: |
           cp -R common cspm/zanshin/
           cp requirements.txt cspm/zanshin/
@@ -87,3 +87,4 @@ jobs:
           scm-do-build-during-deployment: true
           enable-oryx-build: true
           
+#          https://development93ae.blob.core.windows.net/github-actions-deploy/Functionapp_2024510162740.zip?sv=2021-12-02&st=2024-05-10T16%3A22%3A41Z&se=2025-05-10T16%3A27%3A41Z&sr=b&sp=r&sig=Npjde4HHZOn6SD8%2FIes0Vyvpo3eqNF%2F%2F6W2sSWpLQM8%3D
