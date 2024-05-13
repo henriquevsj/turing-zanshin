@@ -29,20 +29,6 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
              status_code=200
         )
 
-@app.timer_trigger(schedule="0 */10 * * * *", arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
-
-def timer_trigger1(myTimer: func.TimerRequest) -> None:
-    if myTimer.past_due:
-        logging.info('The timer is past due!')
-    logging.info('Python timer trigger function executed.')
-
-    fetch_data = DataFetcher()
-    try:
-        fetch_data.fetch_data(process_document)
-    except Exception as e:
-        logging.info(f"Erro ao buscar dados: {e}")
-
 def process_document(db_instance, collection, document):
     # Obter as informações necessárias do documento
     project_name = document.get('ProjectName')
@@ -107,3 +93,17 @@ def process_response(response_data, project_name, tool_type, tool_name, zanshin_
             selected_fields.append(_filter) 
 
     return selected_fields
+
+@app.timer_trigger(schedule="0 */10 * * * *", arg_name="myTimer", run_on_startup=True,
+              use_monitor=False) 
+
+def timer_trigger1(myTimer: func.TimerRequest) -> None:
+    if myTimer.past_due:
+        logging.info('The timer is past due!')
+    logging.info('Python timer trigger function executed.')
+
+    fetch_data = DataFetcher()
+    try:
+        fetch_data.fetch_data(process_document)
+    except Exception as e:
+        logging.info(f"Erro ao buscar dados: {e}")
