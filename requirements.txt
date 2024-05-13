@@ -6,3 +6,4 @@ jira
 pymsteams
 fastapi
 uvicorn
+azure-functions
