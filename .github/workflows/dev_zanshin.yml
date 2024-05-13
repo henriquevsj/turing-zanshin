@@ -38,7 +38,6 @@ jobs:
 
       - name: Copy common folder and requirements.txt
         run: |
-          cp -R common cspm/zanshin/
           cp requirements.txt cspm/zanshin/
           
       - name: Zip artifact for deployment

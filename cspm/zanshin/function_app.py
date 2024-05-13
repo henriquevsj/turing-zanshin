@@ -1,8 +1,8 @@
 import logging
 import requests
 import azure.functions as func
-from common.mongodb_fetch_data import DataFetcher
-from common.mongodb_update_document import UpdateDocument
+from mongodb_fetch_data import DataFetcher
+from mongodb_update_document import UpdateDocument
 
 logging.basicConfig(level=logging.INFO)  # Configurando o nível de log para INFO
 
@@ -94,8 +94,7 @@ def process_response(response_data, project_name, tool_type, tool_name, zanshin_
 
     return selected_fields
 
-@app.timer_trigger(schedule="0 */10 * * * *", arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
+@app.timer_trigger(schedule="0 */10 * * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False) 
 
 def timer_trigger1(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
