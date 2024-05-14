@@ -40,8 +40,8 @@ jobs:
         run: |
           cp requirements.txt cspm/zanshin/
           
-      - name: Zip artifact for deployment
-        run: zip release.zip cspm/zanshin/* -r
+#      - name: Zip artifact for deployment
+#        run: zip release.zip cspm/zanshin/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -66,8 +66,8 @@ jobs:
         with:
           name: python-zanshin
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip     
+#      - name: Unzip artifact for deployment
+#        run: unzip release.zip     
         
       - name: Login to Azure
         uses: azure/login@v1
