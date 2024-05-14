@@ -87,6 +87,6 @@ jobs:
         with:
           app-name: 'zanshin'
           slot-name: 'Production'
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          package: cspm/
           scm-do-build-during-deployment: true
           enable-oryx-build: true
