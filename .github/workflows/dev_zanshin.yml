@@ -40,8 +40,13 @@ jobs:
         run: |
           cp requirements.txt cspm/zanshin/
           
+      - name: Move files to root
+        run: |
+          mv cspm/zanshin/* cspm/
+          rm -rf cspm/zanshin
+
       - name: Zip artifact for deployment
-        run: zip release.zip cspm/zanshin/* -r
+        run: zip release.zip cspm/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
