@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'cspm/zanshin' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   PYTHON_VERSION: '3.11' # set this to the python version to use (supports 3.6, 3.7, 3.8)
 
 jobs:
@@ -36,17 +36,8 @@ jobs:
 
       # Optional: Add step to run tests here
 
-      - name: Copy common folder and requirements.txt
-        run: |
-          cp requirements.txt cspm/zanshin/
-          
-      - name: Move files to root
-        run: |
-          mv cspm/zanshin/* cspm/
-          rm -rf cspm/zanshin
-
       - name: Zip artifact for deployment
-        run: zip release.zip cspm/* -r
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -87,6 +78,6 @@ jobs:
         with:
           app-name: 'zanshin'
           slot-name: 'Production'
-          package: cspm/
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
