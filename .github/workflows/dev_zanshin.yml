@@ -73,5 +73,7 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DFFC187D536C49928B81B8ED21D23082 }}
       
       - name: Publish to Azure Function App
-        run: func azure functionapp publish zanshin
+        run: |
+          sudo npm install -g azure-functions-core-tools@3 --unsafe-perm=true
+          func azure functionapp publish zanshin
           
