@@ -1,9 +1,1 @@
-python-sonarqube-api
-pymongo
-python-dotenv
-requests
-jira
-pymsteams
-fastapi
-uvicorn
 azure-functions
