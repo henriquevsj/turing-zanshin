@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - prod
-      - hml
+      - dev
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:

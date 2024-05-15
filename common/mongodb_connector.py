@@ -6,7 +6,6 @@ load_dotenv()
 
 class MongoDB:
     def __init__(self, timeout=5000, database_name='doconnect_db'):
-        # self.connection_string = "mongodb://localhost:27017/"
         self.connection_string = f"mongodb+srv://{os.getenv('MONGO_USER_NAME')}:{os.getenv('MONGO_PASSWORD')}@cluster01.it0lbcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01"
         self.timeout = timeout
         self.database_name = database_name
