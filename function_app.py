@@ -8,13 +8,10 @@ app = func.FunctionApp()
 def http_function(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
     
-    # Instanciando a classe Zanshin
-    zanshin = Zanshin()
-    
+    zanshin = Zanshin()        
     try:
-        # Chamando o inicializador do processo de busca de dados da classe
         zanshin.__init__()
-        return func.HttpResponse("This HTTP triggered function executed successfully.", status_code=200)
+        return func.HttpResponse("Zanshin processing completed successfully.", status_code=200)
     except Exception as e:
-        logging.error(f"Erro ao buscar dados: {e}")
-        return func.HttpResponse("Erro ao buscar dados", status_code=500)
+        logging.error(f"Erro ao processar Zanshin: {e}")
+        return func.HttpResponse("Erro ao processar Zanshin", status_code=500)

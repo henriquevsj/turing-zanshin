@@ -2,11 +2,26 @@ import logging
 import requests
 from common.mongodb_fetch_data import DataFetcher
 from common.mongodb_update_document import UpdateDocument
+from common.service_license_validator import LicenseValidator
 
 class Zanshin:
+    def __init__(self):
+        self.license_validator = LicenseValidator()
+        self.fetch_data = DataFetcher()
+
+        # Verificar a licença antes de continuar
+        if not self.license_validator.verify_license():
+            logging.error("API license validation failed. Zanshin processing aborted.")
+            return
+
+        try:
+            self.fetch_data.fetch_data(self.process_document)
+        except Exception as e:
+            logging.error(f"Erro ao buscar dados: {e}")
+
     def process_document(self, db_instance, collection, document):
         # Obter as informações necessárias do documento
-        self.project_name = document.get('ProjvectName')
+        self.project_name = document.get('ProjectName')
         logging.info(f"ProjectName: {self.project_name}")
         tool_type = "CSPM"
         tool_name = "Zanshin"
@@ -15,14 +30,10 @@ class Zanshin:
         self.zanshin_url = self.zanshin_info.get('ZanshinURL')
         self.zanshin_organization_id = self.zanshin_info.get('ZanshinOrganizationId')
         
-        # Adicionar verificação para AnalysisResultsHistory
         analysis_results_history = document.get('AnalysisResultsHistory', [])
-        logging.info(f"AnalysisResultsHistory: {analysis_results_history}")
-        
         self.existing_ids = [vulnerability['Id'] for vulnerability in analysis_results_history if 'Id' in vulnerability]
-        logging.info(f"Existing IDs: {self.existing_ids}")
 
-        # Verificando se os dados estão presentes presente antes de acessar
+        # Verificando se os dados estão presentes antes de acessar
         if self.zanshin_token and self.zanshin_url and self.zanshin_organization_id:
             try:
                 # Chamada à API Zanshin
@@ -79,11 +90,3 @@ class Zanshin:
                 selected_history_fields.append(_filter)
 
         return selected_history_fields, selected_snapshot_fields
-
-    def __init__(self):
-        # Instanciando a classe Data Fetcher para processar dados de todas as coleção e documentos de um determinado de um banco de dados do Projeto ou Time em uma unica chamada HTTP
-        self.fetch_data = DataFetcher()
-        try:
-            self.fetch_data.fetch_data(self.process_document)
-        except Exception as e:
-            print(f"Erro ao buscar dados: {e}")

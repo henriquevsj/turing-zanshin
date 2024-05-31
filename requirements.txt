@@ -8,3 +8,5 @@ pymongo
 python-dotenv
 chardet
 pyjwt
+flask
+jwt
