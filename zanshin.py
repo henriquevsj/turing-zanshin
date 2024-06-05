@@ -90,3 +90,10 @@ class Zanshin:
                 selected_history_fields.append(_filter)
 
         return selected_history_fields, selected_snapshot_fields
+
+if __name__ == "__main__":
+    try:
+        zanshin = Zanshin()
+        zanshin.__init__()
+    except Exception as e:
+        print(f"Erro ao buscar dados: {e}")
