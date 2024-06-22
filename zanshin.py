@@ -30,6 +30,7 @@ class Zanshin:
         self.zanshin_url = self.zanshin_info.get('ZanshinURL')
         self.zanshin_organization_id = self.zanshin_info.get('ZanshinOrganizationId')
         
+        # Obter os IDs existentes na coleção para posteriormente comparar e criar apenas as que não existem
         analysis_results_history = document.get('AnalysisResultsHistory', [])
         self.existing_ids = [vulnerability['Id'] for vulnerability in analysis_results_history if 'Id' in vulnerability]
 
@@ -52,7 +53,7 @@ class Zanshin:
                         update_document.update_document(db_instance, document['_id'], selected_history_fields, selected_snapshot_fields, collection, tool_type, tool_name)
                     
                     except Exception as e:
-                        logging.info(f"Erro ao atualizar os dados no documento: {e}")
+                        logging.info(f"Erro ao atualizar os dados no documento {document['_id']}: {e}")
                 
                 else:
                     logging.error(f"Erro na requisição Zanshin: {response.status_code} - {response.text}")
@@ -84,16 +85,18 @@ class Zanshin:
                 'CreationDate': alert.get('createdAt'),
             }
             
-            selected_snapshot_fields.append(_filter)
-
-            if alert.get('state') == "Open":
+            # Adiciona ao histórico se não existir
+            if alert.get('id') not in self.existing_ids:
                 selected_history_fields.append(_filter)
+
+            # Adiciona ao snapshot se o status for "OPEN"
+            if alert.get('state') == "OPEN":
+                selected_snapshot_fields.append(_filter)
 
         return selected_history_fields, selected_snapshot_fields
 
 if __name__ == "__main__":
     try:
         zanshin = Zanshin()
-        zanshin.__init__()
     except Exception as e:
         print(f"Erro ao buscar dados: {e}")
