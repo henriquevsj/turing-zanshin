@@ -5,9 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class MongoDB:
-    def __init__(self, timeout=5000, database_name='doconnect_db'):
-        # self.connection_string = "mongodb://localhost:27017/"
-        self.connection_string = f"mongodb+srv://{os.getenv('MONGO_USER_NAME')}:{os.getenv('MONGO_PASSWORD')}@cluster01.it0lbcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01"
+    def __init__(self, timeout=5000, database_name=os.getenv('MONGO_DB_NAME')):
+        self.connection_string = f"mongodb+srv://{os.getenv('MONGO_USER_NAME')}:{os.getenv('MONGO_PASSWORD')}@{os.getenv('MONGO_URL')}/?retryWrites=true&w=majority&appName={os.getenv('MONGO_CLUSTER_NAME')}"
         self.timeout = timeout
         self.database_name = database_name
         self.client = None

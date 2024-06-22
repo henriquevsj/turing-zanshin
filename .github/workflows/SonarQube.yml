@@ -1,9 +1,7 @@
 name: SonarQube
 on:
   push:
-    branches:
-      - prod
-      - hml
+
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:

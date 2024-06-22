@@ -7,3 +7,4 @@ requests
 pymongo
 python-dotenv
 chardet
+pyjwt
