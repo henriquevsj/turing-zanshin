@@ -4,6 +4,8 @@ from common.mongodb_fetch_data import DataFetcher
 from common.mongodb_update_document import UpdateDocument
 from common.service_license_validator import LicenseValidator
 
+logging.basicConfig(level=logging.INFO)  # Configurando o nível de log para INFO
+
 class Zanshin:
     def __init__(self):
         self.license_validator = LicenseValidator()

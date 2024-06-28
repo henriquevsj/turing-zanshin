@@ -1,0 +1,2 @@
+# Executar o script a cada 1 hora
+0 * * * * root python /app/zanshin.py >> /var/log/cron.log 2>&1
