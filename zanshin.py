@@ -9,7 +9,6 @@ logging.basicConfig(level=logging.INFO)  # Configurando o nível de log para INF
 class Zanshin:
     def __init__(self):
         self.license_validator = LicenseValidator()
-        self.fetch_data = DataFetcher()
 
         # Verificar a licença antes de continuar
         if not self.license_validator.verify_license():
@@ -17,7 +16,7 @@ class Zanshin:
             return
 
         try:
-            self.fetch_data.fetch_data(self.process_document)
+            DataFetcher.fetch_data(self.process_document)
         except Exception as e:
             logging.error(f"Erro ao buscar dados: {e}")
 
